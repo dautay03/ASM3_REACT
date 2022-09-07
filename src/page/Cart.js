@@ -97,7 +97,7 @@ function Cart() {
 
                         </div>
                         <div style={{ textAlign: 'right', width: '50%' }}>
-                            <Button style={{ fontSize: '12px', color: 'black', backgroundColor: 'white', borderColor: 'black' }}>Proceed to CheckOut <i class="fa fa-mail-forward"></i></Button>
+                            <Button style={{ fontSize: '12px', color: 'black', backgroundColor: 'white', borderColor: 'black' }} onClick={() => pageNavigate('checkout')}>Proceed to CheckOut <i class="fa fa-mail-forward"></i></Button>
                         </div>
                     </div>
                 </div>
