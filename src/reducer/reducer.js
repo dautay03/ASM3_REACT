@@ -54,7 +54,10 @@ const counterSlice = createSlice(
             },
             deletecart(state, action) {
                 state.userData.splice(action.payload, 1)
-            }
+            },
+            addcartlocalstorage(state, action) {
+                state.userData = action.payload
+            },
         }
 
     }

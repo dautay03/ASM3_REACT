@@ -54,7 +54,7 @@ function Checkout() {
                 </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <div style={{ width: '70%', paddingRight: '50px' }}>
+                <div style={{ width: '60%', paddingRight: '50px' }}>
                     <Form onSubmit={(e) => handleSubmit(e)}>
                         <h2 style={{
                             fontStyle: 'italic',
@@ -111,13 +111,13 @@ function Checkout() {
 
                     </Form>
                 </div>
-                <div style={{ width: '30%', padding: '3.5rem', backgroundColor: '#f6f9f6' }}>
+                <div style={{ width: '40%', padding: '3.5rem', backgroundColor: '#f6f9f6' }}>
                     <h5 style={{ fontSize: '2rem', marginBottom: '10px', fontStyle: 'italic' }}>YOUR ORDER</h5>
                     {userdata.map((item) => {
                         return (
                             <div style={{ display: 'flex', flexDirection: 'row', borderBottom: '2px solid black' }}>
                                 <div style={{ width: '50%', fontSize: '1.5rem', margin: '5px 0px', fontStyle: 'italic' }}>{item.item.name}</div>
-                                <div style={{ width: '50%', textAlign: 'right', fontSize: '1.5rem', margin: '5px 0px', fontStyle: 'italic' }}>{numberhandle(item.item.price) + 'x' + item.quantity}</div>
+                                <div style={{ width: '50%', textAlign: 'right', fontSize: '1.5rem', margin: '5px 0px', fontStyle: 'italic' }}>{numberhandle(item.item.price) + 'VND x ' + item.quantity}</div>
                             </div>
                         )
                     })}

@@ -49,3 +49,21 @@ code {
 .imageRigth {
   object-position: right;
 }
+
+.css-fix {
+  white-space: pre-wrap;
+  /* or pre-line */
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(.8) translateY(1000px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+

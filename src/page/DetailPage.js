@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CardImg, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
+import { saveToLocalStorage } from "../data/localstorage";
 import counterSlice from "../reducer/reducer";
 
 function DetailProduct() {
@@ -11,6 +12,7 @@ function DetailProduct() {
         navigation('/' + item)
     }
     const usercart = useSelector((State) => State.userData)
+    saveToLocalStorage('usedata', usercart)
     console.log('usedata', usercart)
     const style = { width: '25%', padding: '5px', display: 'inline-block', borderRadius: '5px' }
     const img = { width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }
@@ -24,7 +26,6 @@ function DetailProduct() {
 
     console.log('state', state)
     useEffect(() => { if (JSON.stringify(item) !== JSON.stringify(state)) { setState(item) } }, [item])
-
 
     const numberhandle = (num) => {
         let str = num.toString()
@@ -65,7 +66,7 @@ function DetailProduct() {
                     <h2 h2 style={{ fontWeigth: '500', fontStyle: 'italic', fontSize: '2.5rem' }
                     }> {state[0].name}</h2>
                     <h6 style={{ fontSize: '12px', fontStyle: 'italic', fontWeight: '200', margin: '20px 0px' }}>{numberhandle(state[0].price) + ' VND'}</h6>
-                    <span style={{ width: '70%', fontStyle: 'italic', fontWeight: '200' }}>{state[0].short_desc}</span>
+                    <p style={{ whiteSpace: 'pre-line', fontStyle: 'italic', fontWeight: '200', display: 'block' }}>{state[0].short_desc}</p>
                     <h6 style={{ fontStyle: 'italic', fontWeight: '700', margin: '16px 0px', display: 'inline-block' }}>CATEGORY:</h6><span style={{ fontStyle: 'italic' }}>{' watchs'}</span>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ border: '1px solid gray', width: '11rem', padding: '2px' }}>
@@ -81,7 +82,7 @@ function DetailProduct() {
             <div style={{ width: '50%', margin: '20px 0px', }} >
                 <button style={{ backgroundColor: '#222222', color: 'white', fontStyle: 'italic', display: 'block', margin: '20px 0px', padding: '5px' }} onClick={() => { }}>DESCRIPTION</button>
                 <h5 style={{ fontStyle: 'italic' }}>PRODUCT DESCRIPTION</h5>
-                <div style={{ fontStyle: 'italic', fontWeight: '200' }}>{state[0].long_desc}</div>
+                <div style={{ fontStyle: 'italic', fontWeight: '200', }}>{`${state[0].long_desc}`}</div>
             </div>
             <div >
                 <h5 style={{ fontStyle: 'italic', margin: '20px 0px' }}>RELATED PRODUCT</h5>

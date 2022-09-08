@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, FormControl, Image, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { saveToLocalStorage } from "../data/localstorage";
 import counterSlice from "../reducer/reducer";
 
 function Cart() {
@@ -11,6 +12,7 @@ function Cart() {
     }
     const dispart = useDispatch()
     const data = useSelector((state) => state.userData)
+    saveToLocalStorage('usedata', data)
     const [state, setState] = useState(data)
     if (JSON.stringify(data) !== JSON.stringify(state)) { setState(data) }
     const quantity = (index, left) => {
@@ -104,12 +106,12 @@ function Cart() {
                 <div style={{ width: '30%', padding: '3.5rem', backgroundColor: '#f6f9f6' }}>
                     <h5 style={{ fontSize: '2rem', marginBottom: '10px', fontStyle: 'italic' }}>CART TOTAL</h5>
                     <div style={{ display: 'flex', flexDirection: 'row', borderBottom: '2px solid black' }}>
-                        <div style={{ width: '50%', fontSize: '1.5rem', margin: '5px 0px', fontStyle: 'italic' }}>SUBTOTAL</div>
-                        <div style={{ width: '50%', textAlign: 'right', fontSize: '1.5rem', margin: '5px 0px', fontStyle: 'italic' }}>{numberhandle(state.reduce((total, item) => { return total + (item.item.price * item.quantity) }, 0))}{' VND'}</div>
+                        <div style={{ width: '50%', fontSize: '1rem', margin: '5px 0px', fontStyle: 'italic' }}>SUBTOTAL</div>
+                        <div style={{ width: '50%', textAlign: 'right', fontSize: '1rem', margin: '5px 0px', fontStyle: 'italic' }}>{numberhandle(state.reduce((total, item) => { return total + (item.item.price * item.quantity) }, 0))}{' VND'}</div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '15px' }}>
-                        <div style={{ width: '50%', fontSize: '1.5rem', margin: '5px 0px', fontStyle: 'italic' }}>TOTAL</div>
-                        <div style={{ width: '50%', textAlign: 'right', fontSize: '1.7rem', margin: '5px 0px', fontStyle: 'italic' }}>{numberhandle(state.reduce((total, item) => { return total + (item.item.price * item.quantity) }, 0))}{' VND'}</div>
+                        <div style={{ width: '50%', fontSize: '1.2rem', margin: '5px 0px', fontStyle: 'italic' }}>TOTAL</div>
+                        <div style={{ width: '50%', textAlign: 'right', fontSize: '1.3rem', margin: '5px 0px', fontStyle: 'italic' }}>{numberhandle(state.reduce((total, item) => { return total + (item.item.price * item.quantity) }, 0))}{' VND'}</div>
                     </div>
                     <FormControl type="text" placeholder="Enter your coupon" />
                     <Button style={{ color: 'white', backgroundColor: '#444444', width: '100%', height: '3.5rem', borderColor: '#444444' }} type="text"  ><i class="fa fa-shopping-cart"></i> `Apply coupon`</Button>
